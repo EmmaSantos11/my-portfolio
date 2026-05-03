@@ -44,13 +44,15 @@
         <ul>
           <li><a href="#home" class="active"> Home </a></li>
           <li><a href="#about"> About Me</a></li>
+          <li><a href="#experience"> Experience </a></li>
           <li><a href="#projects"> Projects </a></li>
+          <li><a href="#contact"> Contact </a></li>
         </ul>
         </nav>
         <!-- Navbar End -->
         <!-- Copyright -->
         <footer>
-         <small> &copy; 2024 Ohamadike Emmanuel Chidera</small>
+         <small> &copy; 2026 Ohamadike Emmanuel Chidera</small>
         </footer>
         <!-- Copyright End -->
       </div>
@@ -60,15 +62,27 @@
       <div class="main-content">
         <!-- Home Section -->
         <section class="home section active" id="home">
+          <canvas id="portfolioParticles"></canvas>
           <div class="container">
             <div class="intro">
-              <img src="assets/imgs/MyP.png" alt="prasath's img" class="shadow-dark">
+              <img src="assets/imgs/MyP.png" alt="Ohamadike Emmanuel Chidera" class="shadow-dark intro-avatar">
+              <p class="intro-greeting">Hello, I'm</p>
               <h1>Ohamadike Emmanuel Chidera</h1>
-              <p>I'm a junior Software Developer & Data Science student. <br>  I am actively seeking flexible or remote Data Science roles where I can apply my analytical and technical skills.</p>
+              <p class="intro-roles">
+                <span class="intro-role-prefix">I'm a </span>
+                <span class="intro-typewriter" id="introTypewriter"></span><span class="intro-cursor">|</span>
+              </p>
+              <p class="intro-location"><i class="fa fa-map-marker"></i> Abidjan, Côte d'Ivoire &nbsp;|&nbsp; <i class="fa fa-globe"></i> Open to Remote</p>
               <div class="social-link">
-                <a href="https://www.linkedin.com/in/emmanuel-ohamadike-767195196/" target="_blank"> <i class="fa fa-linkedin"></i> </a>
-                <a href="mailto:ohamadikee98@gmail.com" target="_blank"> <i class="fa fa-envelope-o"></i> </a>
-                <a href="https://github.com/EmmaSantos11" target="_blank"> <i class="fa fa-github"></i> </a>
+                <a href="https://www.linkedin.com/in/emmanuel-ohamadike-767195196/" target="_blank" title="LinkedIn"> <i class="fa fa-linkedin"></i> </a>
+                <a href="mailto:ohamadikee98@gmail.com" target="_blank" title="Email"> <i class="fa fa-envelope-o"></i> </a>
+                <a href="https://github.com/EmmaSantos11" target="_blank" title="GitHub"> <i class="fa fa-github"></i> </a>
+                <a href="https://x.com/bera_santos2" target="_blank" title="X / Twitter"> <i class="fa fa-twitter"></i> </a>
+                <a href="https://www.instagram.com/_bera_santos" target="_blank" title="Instagram"> <i class="fa fa-instagram"></i> </a>
+              </div>
+              <div class="intro-cta">
+                <a href="#about" class="btn intro-btn-primary" onclick="document.querySelector('[href=\'#about\']').click()">About Me</a>
+                <a href="assets/resume/Ohamadike Chidera Emmanuel.pdf" download class="btn intro-btn-secondary">Download CV</a>
               </div>
             </div>
           </div>
@@ -86,14 +100,19 @@
               <div class="about-content padd-15">
                 <div class="row">
                   <div class="about-text padd-15">
-                    <p>My name is Ohamadike Emmanuel Chidera. As a recent graduate in Computer Science, 
-                      I have gained strong expertise in IT infrastructure,
-                      incident management, and data science. Skilled in Python, Java, and C++, I am adept at
-                      programming, data analysis, and software development. My experience as a Teaching Assistant
-                      has enhanced my leadership, problem-solving, and teamwork abilities. I am eager to contribute
-                      to innovative projects and drive meaningful progress in diverse industries.
-                      
-                    </p>
+                    <p>My name is Ohamadike Emmanuel Chidera (known online as <strong>Bera Santos</strong>). I am a Computer Science graduate, Software Developer, and AI Quality Analyst based in Abidjan, Côte d'Ivoire. I specialise in Python, NLP, Machine Learning, and Prompt Engineering, and I bring hands-on experience evaluating and fine-tuning large language models (LLMs).</p>
+                    <p style="margin-top:10px;">I speak English and French fluently, and I am actively seeking remote roles in Data Science, AI/ML Engineering, or Prompt Engineering where I can apply my analytical skills to meaningful problems.</p>
+                  </div>
+                  <!-- AI & LLM Experience -->
+                  <div class="about-text padd-15" style="margin-top:10px;">
+                    <h4 style="font-weight:700; color:#302e4d; margin-bottom:10px;">AI &amp; LLM Experience</h4>
+                    <ul style="color:#504e70; line-height:1.8; padding-left:18px;">
+                      <li>Designed and tested prompts to evaluate AI response quality (accuracy, coherence, relevance)</li>
+                      <li>Compared LLM outputs for contextual relevance and helpfulness across multi-turn conversations</li>
+                      <li>Simulated real-world conversations to assess model consistency and personalisation</li>
+                      <li>Applied structured reasoning frameworks to evaluate and document model performance</li>
+                      <li>Annotated and classified datasets for NLP training and validation</li>
+                    </ul>
                   </div>
                 </div>
                 <div class="row">
@@ -201,54 +220,54 @@
                       <div class="skill-item web-technologies padd-15">
                         <h4>Machine Learning</h4>
                         <div class="progress">
-                          <div class="progress-in" style="width: 100%"></div>
+                          <div class="progress-in" style="width: 90%"></div>
                             <div class="skill-percent">
-                              100%
+                              90%
                           </div>
                         </div>
                       </div>
                       <div class="skill-item web-technologies padd-15">
-                        <h4>Graph Models & knowledge Graphs</h4>
+                        <h4>Graph Models & Knowledge Graphs</h4>
                         <div class="progress">
-                          <div class="progress-in" style="width: 100%"></div>
+                          <div class="progress-in" style="width: 80%"></div>
                             <div class="skill-percent">
-                              100%
+                              80%
                           </div>
                         </div>
                       </div>
                       <div class="skill-item web-technologies padd-15">
                         <h4>NLP</h4>
                         <div class="progress">
-                          <div class="progress-in" style="width: 100%"></div>
+                          <div class="progress-in" style="width: 85%"></div>
                             <div class="skill-percent">
-                              100%
+                              85%
                           </div>
                         </div>
                       </div>
                       <div class="skill-item web-technologies padd-15">
                         <h4>Data Analytics & Mining</h4>
                         <div class="progress">
-                          <div class="progress-in" style="width: 100%"></div>
+                          <div class="progress-in" style="width: 88%"></div>
                             <div class="skill-percent">
-                              100%
+                              88%
                           </div>
                         </div>
                       </div>
                       <div class="skill-item web-technologies padd-15">
                         <h4>Web Development</h4>
                         <div class="progress">
-                          <div class="progress-in" style="width: 100%"></div>
+                          <div class="progress-in" style="width: 75%"></div>
                             <div class="skill-percent">
-                              100%
+                              75%
                           </div>
                         </div>
                       </div>
                       <div class="skill-item web-technologies padd-15">
-                        <h4>Data Science & AI </h4>
+                        <h4>Data Science & AI</h4>
                         <div class="progress">
-                          <div class="progress-in" style="width: 100%"></div>
+                          <div class="progress-in" style="width: 92%"></div>
                             <div class="skill-percent">
-                              100%
+                              92%
                           </div>
                         </div>
                       </div>
@@ -361,6 +380,47 @@
           </div>
         </section>
         <!-- About Section End -->
+        <!-- Experience Section -->
+        <section class="experience section" id="experience">
+          <div class="container">
+            <div class="row">
+              <div class="section-title padd-15">
+                <h2>Work Experience</h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="experience-content padd-15">
+                <div class="timeline-box padd-15">
+                  <div class="row">
+                    <div class="timeline shadow-dark">
+                      <!-- Experience Item -->
+                      <div class="timeline-item">
+                        <div class="circle-dot"></div>
+                        <h6 class="timeline-date"><i class="fa fa-calendar"></i> Jan 2024 &ndash; Present</h6>
+                        <h4 class="timeline-title">Field Agent &mdash; CJ Grand Group, Abidjan</h4>
+                        <p class="timeline-text">
+                          Managed customer currency exchange transactions with high accuracy. Assisted clients purchasing vehicles and real estate with clear guidance. Handled daily client interactions and prepared detailed end-of-day financial reports. Joined part-time during studies; transitioned to full-time in January 2025.
+                        </p>
+                      </div>
+                      <!-- Experience Item End -->
+                      <!-- Experience Item -->
+                      <div class="timeline-item">
+                        <div class="circle-dot"></div>
+                        <h6 class="timeline-date"><i class="fa fa-calendar"></i> Jan 2023 &ndash; Oct 2024</h6>
+                        <h4 class="timeline-title">Teaching Assistant &mdash; Catholic University of Ghana, Fiapre</h4>
+                        <p class="timeline-text">
+                          Assisted instructors with student assessments, class planning, and academic material organisation. Mentored students in assignments and research projects. Facilitated scholarly discussions and provided guidance on technical subjects.
+                        </p>
+                      </div>
+                      <!-- Experience Item End -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Experience Section End -->
         <!-- Projects Section -->
         <section class="project section" id="projects">
           <div class="container">
@@ -398,13 +458,13 @@
                   </div>
                   <div class="project-info">
                     <h4 class="project-title">Clinical-Rotation-Management-Web-App </h4>
-                    <p class="project-description">This web-based system is designed to streamline and enhance the management of students' clinical rotations during their practicum. 
-                      It automates scheduling, attendance tracking, performance evaluation, and document management, 
+                    <p class="project-description">This web-based system is designed to streamline and enhance the management of students' clinical rotations during their practicum.
+                      It automates scheduling, attendance tracking, performance evaluation, and document management,
                       improving efficiency and reducing administrative workload.
-                      Key features include student and supervisor management, real-time progress tracking, notifications, and reporting tools. 
+                      Key features include student and supervisor management, real-time progress tracking, notifications, and reporting tools.
                       The system ensures transparency, data security, and scalability, making it a reliable solution for managing clinical training programs. </p>
                     <div class="buttons">
-                      <a href="https://github.com/EmmaSantos11/Twitter-Driven-Voting-System" class="btn" target="_blank">View Project</a>
+                      <a href="https://github.com/EmmaSantos11/Clinical-Rotation-Management-Web-App" class="btn" target="_blank">View Project</a>
                     </div>
                   </div>
                 </div>
@@ -464,15 +524,169 @@
                   </div>
                 </div>
               </div>
+              <!-- New Project: Forex Bot AI -->
+              <div class="project-item padd-15">
+                <div class="project-item-inner shadow-dark">
+                  <div class="project-img">
+                    <img src="assets/imgs/Image2.jpg" alt="Forex Bot AI">
+                  </div>
+                  <div class="project-info">
+                    <h4 class="project-title">Forex Bot AI <span style="font-size:12px; background:#e8f4e8; color:#2d7a2d; padding:2px 8px; border-radius:10px; font-weight:500; margin-left:6px;">In Progress</span></h4>
+                    <p class="project-description">An AI-powered Forex trading bot that analyses market data, identifies trading signals, and executes trades automatically. Built with Python, integrating real-time market feeds and machine learning models for pattern recognition and risk management.</p>
+                    <div class="buttons">
+                      <a href="https://github.com/EmmaSantos11" class="btn" target="_blank">View on GitHub</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- New Project: Bera Ecommerce -->
+              <div class="project-item padd-15">
+                <div class="project-item-inner shadow-dark">
+                  <div class="project-img">
+                    <img src="assets/imgs/Image4.png" alt="Bera Ecommerce">
+                  </div>
+                  <div class="project-info">
+                    <h4 class="project-title">Bera &mdash; E-Commerce Website <span style="font-size:12px; background:#e8f4e8; color:#2d7a2d; padding:2px 8px; border-radius:10px; font-weight:500; margin-left:6px;">In Progress</span></h4>
+                    <p class="project-description">A full-featured e-commerce web application with product listings, shopping cart, user authentication, and payment integration. Designed with a modern UI/UX for a seamless online shopping experience across all devices.</p>
+                    <div class="buttons">
+                      <a href="https://github.com/EmmaSantos11" class="btn" target="_blank">View on GitHub</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           </div>
         </div>
         <!-- Projects Section End -->
+        <!-- Contact Section -->
+        <section class="contact section" id="contact">
+          <div class="container">
+            <div class="row">
+              <div class="section-title padd-15">
+                <h2>Get In Touch</h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="contact-content padd-15">
+                <div class="row">
+                  <!-- Contact Info -->
+                  <div class="contact-info padd-15">
+                    <div class="contact-info-item">
+                      <div class="contact-info-icon">
+                        <i class="fa fa-envelope"></i>
+                      </div>
+                      <div class="contact-info-text">
+                        <h4>Email</h4>
+                        <p><a href="mailto:ohamadikee98@gmail.com">ohamadikee98@gmail.com</a></p>
+                      </div>
+                    </div>
+                    <div class="contact-info-item">
+                      <div class="contact-info-icon">
+                        <i class="fa fa-github"></i>
+                      </div>
+                      <div class="contact-info-text">
+                        <h4>GitHub</h4>
+                        <p><a href="https://github.com/EmmaSantos11" target="_blank">github.com/EmmaSantos11</a></p>
+                      </div>
+                    </div>
+                    <div class="contact-info-item">
+                      <div class="contact-info-icon">
+                        <i class="fa fa-linkedin"></i>
+                      </div>
+                      <div class="contact-info-text">
+                        <h4>LinkedIn</h4>
+                        <p><a href="https://www.linkedin.com/in/emmanuel-ohamadike-767195196/" target="_blank">Emmanuel Ohamadike</a></p>
+                      </div>
+                    </div>
+                    <div class="contact-info-item">
+                      <div class="contact-info-icon">
+                        <i class="fa fa-map-marker"></i>
+                      </div>
+                      <div class="contact-info-text">
+                        <h4>Availability</h4>
+                        <p>Open to remote &amp; flexible roles worldwide</p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Contact Form -->
+                  <div class="contact-form padd-15">
+                    <div class="row">
+                      <div class="form-item padd-15">
+                        <div class="form-group">
+                          <input type="text" id="contact-name" class="form-control" placeholder="Full Name" required>
+                        </div>
+                      </div>
+                      <div class="form-item padd-15">
+                        <div class="form-group">
+                          <input type="email" id="contact-email" class="form-control" placeholder="Email Address" required>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-item col-12 padd-15">
+                        <div class="form-group">
+                          <input type="text" id="contact-subject" class="form-control" placeholder="Subject">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-item col-12 padd-15">
+                        <div class="form-group">
+                          <textarea id="contact-message" class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12 padd-15">
+                        <button type="button" class="btn" id="contact-send-btn" onclick="sendContactEmail()">Send Message</button>
+                        <p id="contact-status" style="margin-top:0.8rem; font-size:0.9rem;"></p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Contact Form End -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Contact Section End -->
       </div>
       <!-- Main Content End -->
     </div>
     <!-- Main Container End -->
+
+    <!-- AI Chat Widget -->
+    <div class="ai-chat-widget" id="aiChatWidget">
+      <div class="ai-chat-box" id="aiChatBox">
+        <div class="ai-chat-header">
+          <div class="ai-chat-header-info">
+            <div class="ai-chat-avatar"><i class="fa fa-robot"></i></div>
+            <div>
+              <strong>Ask Bera's AI</strong>
+              <span>Powered by Claude</span>
+            </div>
+          </div>
+          <button class="ai-chat-close" id="aiChatClose" aria-label="Close chat">&times;</button>
+        </div>
+        <div class="ai-chat-messages" id="aiChatMessages">
+          <div class="ai-msg ai-msg-bot">
+            <p>Hi! I'm an AI assistant that knows about Bera's skills, projects, and experience. Ask me anything — "What projects has he worked on?", "Is he open to remote work?", "What are his strongest skills?"</p>
+          </div>
+        </div>
+        <div class="ai-chat-input-area">
+          <input type="text" id="aiChatInput" class="ai-chat-input" placeholder="Ask something..." autocomplete="off">
+          <button class="ai-chat-send" id="aiChatSend" aria-label="Send message">
+            <i class="fa fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+      <button class="ai-chat-toggle" id="aiChatToggle" aria-label="Open AI chat">
+        <i class="fa fa-comments" id="aiChatIcon"></i>
+      </button>
+    </div>
+    <!-- AI Chat Widget End -->
+
     <!-- Theme Switcher -->
     <div class="theme-switch">
       <div class="toggle-theme-switcher">
