@@ -46,6 +46,7 @@
           <li><a href="#about"> About Me</a></li>
           <li><a href="#experience"> Experience </a></li>
           <li><a href="#projects"> Projects </a></li>
+          <li><a href="#resume"> Resume </a></li>
           <li><a href="#contact"> Contact </a></li>
         </ul>
         </nav>
@@ -82,7 +83,10 @@
               </div>
               <div class="intro-cta">
                 <a href="#about" class="btn intro-btn-primary" onclick="document.querySelector('[href=\'#about\']').click()">About Me</a>
-                <a href="assets/resume/Ohamadike Chidera Emmanuel.pdf" download class="btn intro-btn-secondary">Download CV</a>
+                <div class="intro-cv-group">
+                  <a href="assets/resume/Ohamadike Chidera Emmanuel.pdf" download class="btn intro-btn-secondary"><i class="fa fa-download"></i> CV (EN)</a>
+                  <a href="assets/resume/Ohamadike Chidera Emmanuel FR.pdf" download class="btn intro-btn-secondary"><i class="fa fa-download"></i> CV (FR)</a>
+                </div>
               </div>
             </div>
           </div>
@@ -119,7 +123,8 @@
                   <div class="personal-info padd-15">
                     <div class="row">
                       <div class="buttons padd-15">
-                        <a href="assets/resume/Ohamadike Chidera Emmanuel.pdf" download target="_blank"class="btn">View my Resume</a>
+                        <a href="assets/resume/Ohamadike Chidera Emmanuel.pdf" download class="btn" style="margin-right:10px;"><i class="fa fa-download"></i> Resume (EN)</a>
+                        <a href="assets/resume/Ohamadike Chidera Emmanuel FR.pdf" download class="btn"><i class="fa fa-download"></i> CV (FR)</a>
                       </div>
                     </div>
                   </div>
@@ -528,7 +533,7 @@
               <div class="project-item padd-15">
                 <div class="project-item-inner shadow-dark">
                   <div class="project-img">
-                    <img src="assets/imgs/Image2.jpg" alt="Forex Bot AI">
+                    <img src="assets/imgs/Forex_AI_Bot.jpeg" alt="Forex Bot AI">
                   </div>
                   <div class="project-info">
                     <h4 class="project-title">Forex Bot AI <span style="font-size:12px; background:#e8f4e8; color:#2d7a2d; padding:2px 8px; border-radius:10px; font-weight:500; margin-left:6px;">In Progress</span></h4>
@@ -543,7 +548,7 @@
               <div class="project-item padd-15">
                 <div class="project-item-inner shadow-dark">
                   <div class="project-img">
-                    <img src="assets/imgs/Image4.png" alt="Bera Ecommerce">
+                    <img src="assets/imgs/Ecomerce_website_Bera.jpeg" alt="Bera Ecommerce">
                   </div>
                   <div class="project-info">
                     <h4 class="project-title">Bera &mdash; E-Commerce Website <span style="font-size:12px; background:#e8f4e8; color:#2d7a2d; padding:2px 8px; border-radius:10px; font-weight:500; margin-left:6px;">In Progress</span></h4>
@@ -559,6 +564,41 @@
           </div>
         </div>
         <!-- Projects Section End -->
+
+        <!-- Resume Section -->
+        <section class="resume-section section" id="resume">
+          <div class="container">
+            <div class="row">
+              <div class="section-title padd-15">
+                <h2>My Resume</h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="resume-lang-bar padd-15">
+                <button class="btn resume-lang-btn resume-lang-active" id="btnEN" onclick="switchResumeLang('en')">
+                  <i class="fa fa-file-text-o"></i>&nbsp; English
+                </button>
+                <button class="btn resume-lang-btn" id="btnFR" onclick="switchResumeLang('fr')">
+                  <i class="fa fa-file-text-o"></i>&nbsp; Fran&ccedil;ais
+                </button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="resume-dl-bar padd-15">
+                <a id="resumeDownloadLink" href="assets/resume/Ohamadike Chidera Emmanuel.pdf" download class="btn">
+                  <i class="fa fa-download"></i>&nbsp; <span id="resumeDlLabel">Download CV (English)</span>
+                </a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="resume-preview-wrap padd-15">
+                <iframe id="resumeIframe" class="resume-iframe shadow-dark" src="assets/resume/Ohamadike Chidera Emmanuel.pdf" title="Resume Preview"></iframe>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Resume Section End -->
+
         <!-- Contact Section -->
         <section class="contact section" id="contact">
           <div class="container">
@@ -661,10 +701,12 @@
       <div class="ai-chat-box" id="aiChatBox">
         <div class="ai-chat-header">
           <div class="ai-chat-header-info">
-            <div class="ai-chat-avatar"><i class="fa fa-robot"></i></div>
+            <div class="ai-chat-avatar">
+              <img src="assets/imgs/MyP.png" alt="Bera AI" class="ai-avatar-photo-sm">
+            </div>
             <div>
               <strong>Ask Bera's AI</strong>
-              <span>Powered by Claude</span>
+              <span>Powered by Claude &bull; Online</span>
             </div>
           </div>
           <button class="ai-chat-close" id="aiChatClose" aria-label="Close chat">&times;</button>
@@ -682,7 +724,8 @@
         </div>
       </div>
       <button class="ai-chat-toggle" id="aiChatToggle" aria-label="Open AI chat">
-        <i class="fa fa-comments" id="aiChatIcon"></i>
+        <img src="assets/imgs/MyP.png" alt="Bera AI" class="ai-avatar-photo">
+        <span class="ai-avatar-online"></span>
       </button>
     </div>
     <!-- AI Chat Widget End -->

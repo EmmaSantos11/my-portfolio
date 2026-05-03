@@ -106,7 +106,7 @@ window.addEventListener("load",function(){
 
 // ===== AI Chat Widget =====
 (function () {
-  const WORKER_URL = 'https://bera-chat.YOUR-SUBDOMAIN.workers.dev'; // Replace after deploying the worker
+  const WORKER_URL = 'https://chart-worker.ohamadikee98.workers.dev';
 
   const box = document.getElementById('aiChatBox');
   const toggle = document.getElementById('aiChatToggle');
@@ -116,11 +116,26 @@ window.addEventListener("load",function(){
   const messages = document.getElementById('aiChatMessages');
 
   let open = false;
+  let closeTimer = null;
   box.classList.add('hidden');
+  box.classList.add('ai-chat-hidden');
 
   function toggleChat() {
     open = !open;
-    box.classList.toggle('hidden', !open);
+    if (open) {
+      clearTimeout(closeTimer);
+      box.classList.remove('hidden');
+      box.classList.add('chat-entering');
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          box.classList.remove('ai-chat-hidden');
+          setTimeout(function () { box.classList.remove('chat-entering'); }, 280);
+        });
+      });
+    } else {
+      box.classList.add('ai-chat-hidden');
+      closeTimer = setTimeout(function () { if (!open) box.classList.add('hidden'); }, 270);
+    }
   }
 
   toggle.addEventListener('click', toggleChat);
@@ -171,6 +186,26 @@ window.addEventListener("load",function(){
     if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
   });
 })();
+
+// ===== Resume Language Switcher =====
+function switchResumeLang(lang) {
+  var enFile = 'assets/resume/Ohamadike Chidera Emmanuel.pdf';
+  var frFile = 'assets/resume/Ohamadike Chidera Emmanuel FR.pdf';
+  var file = lang === 'fr' ? frFile : enFile;
+  var label = lang === 'fr' ? 'Télécharger le CV (Français)' : 'Download CV (English)';
+
+  var iframe = document.getElementById('resumeIframe');
+  var dlLink = document.getElementById('resumeDownloadLink');
+  var dlLabel = document.getElementById('resumeDlLabel');
+  var btnEN = document.getElementById('btnEN');
+  var btnFR = document.getElementById('btnFR');
+
+  if (iframe) iframe.src = file;
+  if (dlLink) dlLink.href = file;
+  if (dlLabel) dlLabel.textContent = label;
+  if (btnEN) btnEN.classList.toggle('resume-lang-active', lang === 'en');
+  if (btnFR) btnFR.classList.toggle('resume-lang-active', lang === 'fr');
+}
 
 // Contact form — opens default mail client with pre-filled message
 function sendContactEmail() {

@@ -1038,7 +1038,8 @@ body.dark .contact .contact-form .form-control{
   transform-origin: bottom right;
   transition: transform 0.25s, opacity 0.25s;
 }
-.ai-chat-box.hidden{
+/* .hidden conflicts with display:none !important — use .ai-chat-hidden for animated toggle */
+.ai-chat-box.ai-chat-hidden{
   transform: scale(0.85);
   opacity: 0;
   pointer-events: none;
@@ -1163,4 +1164,102 @@ body.dark .ai-chat-input{ background: #333; color: #fff; border-color: #444; }
 @media (max-width: 420px){
   .ai-chat-widget{ bottom: 16px; right: 16px; }
   .ai-chat-box{ width: calc(100vw - 32px); }
+}
+
+/* ===== AI Avatar Photo ===== */
+.ai-chat-toggle{
+  padding: 0;
+  overflow: visible;
+  position: relative;
+}
+.ai-avatar-photo{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  border: 2px solid rgba(255,255,255,0.6);
+}
+.ai-avatar-online{
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  width: 13px;
+  height: 13px;
+  background: #22c55e;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  animation: pulse-online 2.4s infinite;
+  pointer-events: none;
+}
+@keyframes pulse-online{
+  0%,100%{ transform: scale(1); box-shadow: 0 0 0 0 rgba(34,197,94,0.5); }
+  60%{ transform: scale(1.15); box-shadow: 0 0 0 5px rgba(34,197,94,0); }
+}
+.ai-chat-avatar{
+  overflow: hidden;
+}
+.ai-avatar-photo-sm{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+/* ===== Resume Section ===== */
+.resume-section .resume-lang-bar{
+  flex: 0 0 100%;
+  max-width: 100%;
+  display: flex;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.resume-lang-btn{
+  opacity: 0.55;
+  font-size: 14px !important;
+  padding: 9px 22px !important;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.resume-lang-btn.resume-lang-active{
+  opacity: 1;
+}
+.resume-section .resume-dl-bar{
+  flex: 0 0 100%;
+  max-width: 100%;
+  margin-bottom: 22px;
+}
+.resume-section .resume-preview-wrap{
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+.resume-iframe{
+  width: 100%;
+  height: 78vh;
+  min-height: 480px;
+  border: 1px solid #d4d4e3;
+  border-radius: 10px;
+  display: block;
+  background: #fff;
+}
+body.dark .resume-iframe{
+  border-color: #333;
+  background: #222;
+}
+
+/* ===== Dual CV buttons in home intro ===== */
+.intro-cv-group{
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ===== Chat open animation on entry ===== */
+@keyframes chatEntrance{
+  from{ transform: scale(0.82); opacity: 0; }
+  to{ transform: scale(1); opacity: 1; }
+}
+.ai-chat-box.chat-entering{
+  animation: chatEntrance 0.25s ease forwards;
 }
