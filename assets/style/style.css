@@ -1498,3 +1498,34 @@ body.dark .resume-iframe{ border-color:#333; background:#222; }
   animation: spin 0.8s linear infinite;
 }
 @keyframes spin{ to{ transform:rotate(360deg); } }
+
+/* ===== Projects page — dark canvas background ===== */
+#projectsParticles{
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+.project.dark-bg{
+  background: #0a0e1a !important;
+  background-image: none !important;
+  overflow: hidden;
+}
+.project.dark-bg .section-title h2{ color: #e2e8f0; }
+.project.dark-bg .project-item-inner{
+  border-color: rgba(52,211,153,0.18);
+  background: transparent;
+}
+.project.dark-bg .project-item-inner .project-info{
+  background: rgba(10,18,34,0.92);
+}
+.project.dark-bg .project-item-inner .project-title{ color: #e2e8f0; }
+.project.dark-bg .project-item-inner .project-description{ color: #94a3b8; }
+.project.dark-bg .project-item-inner:hover{
+  box-shadow: 0 0 0 2px rgba(34,197,94,0.55),
+              0 12px 35px rgba(34,197,94,0.18) !important;
+  transform: translateY(-4px);
+}
+.project.dark-bg .btn{ background: #22c55e; }
+.project.dark-bg .btn:hover{ background: #16a34a !important; }

@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Ohamadike Chidera Emmanuel</title>
+    <title>Contact — Ohamadike Chidera Emmanuel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="assets/imgs/FX.png">
     <link rel="stylesheet" href="./assets/style/style.css" type="text/css">
@@ -15,55 +15,102 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
-    <!-- Preloader -->
     <div class="preloader"><div class="loader"></div></div>
-    <!-- Main Container -->
     <div class="main-container">
-      <!-- Aside -->
       <div class="aside">
         <div class="nav-toggler"><span></span></div>
         <div class="aside-inner">
           <div class="logo"><a href="index.html"> Hi There!</a></div>
           <nav class="nav">
             <ul>
-              <li><a href="index.html" class="active"> Home </a></li>
+              <li><a href="index.html"> Home </a></li>
               <li><a href="about.html"> About Me</a></li>
               <li><a href="experience.html"> Experience </a></li>
               <li><a href="projects.html"> Projects </a></li>
               <li><a href="resume.html"> Resume </a></li>
-              <li><a href="contact.html"> Contact </a></li>
+              <li><a href="contact.html" class="active"> Contact </a></li>
             </ul>
           </nav>
           <footer><small>&copy; 2026 Ohamadike Emmanuel Chidera</small></footer>
         </div>
       </div>
-      <!-- Main Content -->
       <div class="main-content">
-        <!-- Home Section -->
-        <section class="home section active" id="home">
-          <canvas id="portfolioParticles"></canvas>
+        <section class="contact section active" id="contact">
           <div class="container">
-            <div class="intro">
-              <img src="assets/imgs/MyP.png" alt="Ohamadike Emmanuel Chidera" class="shadow-dark intro-avatar">
-              <p class="intro-greeting">Hello, I'm</p>
-              <h1>Ohamadike Emmanuel Chidera</h1>
-              <p class="intro-roles">
-                <span class="intro-role-prefix">I'm a </span>
-                <span class="intro-typewriter" id="introTypewriter"></span><span class="intro-cursor">|</span>
-              </p>
-              <p class="intro-location"><i class="fa fa-map-marker"></i> Abidjan, Côte d'Ivoire &nbsp;|&nbsp; <i class="fa fa-globe"></i> Open to Remote</p>
-              <div class="social-link">
-                <a href="https://www.linkedin.com/in/emmanuel-ohamadike-767195196/" target="_blank" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
-                <a href="mailto:ohamadikee98@gmail.com" target="_blank" title="Email"><i class="fa fa-envelope-o"></i></a>
-                <a href="https://github.com/EmmaSantos11" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
-                <a href="https://x.com/bera_santos2" target="_blank" title="X / Twitter"><i class="fa fa-twitter"></i></a>
-                <a href="https://www.instagram.com/_bera_santos" target="_blank" title="Instagram"><i class="fa fa-instagram"></i></a>
+            <div class="row">
+              <div class="section-title padd-15">
+                <h2>Get In Touch</h2>
               </div>
-              <div class="intro-cta">
-                <a href="about.html" class="btn intro-btn-primary">About Me</a>
-                <div class="intro-cv-group">
-                  <a href="assets/resume/Ohamadike Chidera Emmanuel.pdf" download class="btn intro-btn-secondary"><i class="fa fa-download"></i> CV (EN)</a>
-                  <a href="assets/resume/Ohamadike Chidera Emmanuel FR.pdf" download class="btn intro-btn-secondary"><i class="fa fa-download"></i> CV (FR)</a>
+            </div>
+            <div class="row">
+              <div class="contact-content padd-15">
+                <div class="row">
+                  <!-- Contact Info -->
+                  <div class="contact-info padd-15">
+                    <div class="contact-info-item">
+                      <div class="contact-info-icon"><i class="fa fa-envelope"></i></div>
+                      <div class="contact-info-text">
+                        <h4>Email</h4>
+                        <p><a href="mailto:ohamadikee98@gmail.com">ohamadikee98@gmail.com</a></p>
+                      </div>
+                    </div>
+                    <div class="contact-info-item">
+                      <div class="contact-info-icon"><i class="fa fa-github"></i></div>
+                      <div class="contact-info-text">
+                        <h4>GitHub</h4>
+                        <p><a href="https://github.com/EmmaSantos11" target="_blank">github.com/EmmaSantos11</a></p>
+                      </div>
+                    </div>
+                    <div class="contact-info-item">
+                      <div class="contact-info-icon"><i class="fa fa-linkedin"></i></div>
+                      <div class="contact-info-text">
+                        <h4>LinkedIn</h4>
+                        <p><a href="https://www.linkedin.com/in/emmanuel-ohamadike-767195196/" target="_blank">Emmanuel Ohamadike</a></p>
+                      </div>
+                    </div>
+                    <div class="contact-info-item">
+                      <div class="contact-info-icon"><i class="fa fa-map-marker"></i></div>
+                      <div class="contact-info-text">
+                        <h4>Availability</h4>
+                        <p>Open to remote &amp; flexible roles worldwide</p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Contact Form -->
+                  <div class="contact-form padd-15">
+                    <div class="row">
+                      <div class="form-item padd-15">
+                        <div class="form-group">
+                          <input type="text" id="contact-name" class="form-control" placeholder="Full Name" required>
+                        </div>
+                      </div>
+                      <div class="form-item padd-15">
+                        <div class="form-group">
+                          <input type="email" id="contact-email" class="form-control" placeholder="Email Address" required>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-item col-12 padd-15">
+                        <div class="form-group">
+                          <input type="text" id="contact-subject" class="form-control" placeholder="Subject">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-item col-12 padd-15">
+                        <div class="form-group">
+                          <textarea id="contact-message" class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12 padd-15">
+                        <button type="button" class="btn" id="contact-send-btn" onclick="sendContactEmail()">Send Message</button>
+                        <p id="contact-status" style="margin-top:0.8rem; font-size:0.9rem;"></p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -89,14 +136,12 @@
         </div>
         <div class="ai-chat-messages" id="aiChatMessages">
           <div class="ai-msg ai-msg-bot">
-            <p>Hi! I'm an AI assistant that knows about Bera's skills, projects, and experience. Ask me anything — "What projects has he worked on?", "Is he open to remote work?", "What are his strongest skills?"</p>
+            <p>Hi! I'm an AI assistant that knows about Bera's skills, projects, and experience. Ask me anything!</p>
           </div>
         </div>
         <div class="ai-chat-input-area">
           <input type="text" id="aiChatInput" class="ai-chat-input" placeholder="Ask something..." autocomplete="off">
-          <button class="ai-chat-send" id="aiChatSend" aria-label="Send message">
-            <i class="fa fa-paper-plane"></i>
-          </button>
+          <button class="ai-chat-send" id="aiChatSend" aria-label="Send message"><i class="fa fa-paper-plane"></i></button>
         </div>
       </div>
       <button class="ai-chat-toggle" id="aiChatToggle" aria-label="Open AI chat">

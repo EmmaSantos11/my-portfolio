@@ -1,57 +1,35 @@
 // Preloader
-window.addEventListener("load",function(){
-    document.querySelector(".preloader").classList.add("opacity-0");
-    setTimeout(function(){
-      document.querySelector(".preloader").style.display="none";
-    },1000)
-  })
-  // Aside Navbar
-  const nav=document.querySelector(".nav"),
-  navList=nav.querySelectorAll("li"),
-  totalNavList=navList.length,
-  allSection=document.querySelectorAll(".section"),
-  totalSection=allSection.length;
-  for(let i=0;i<totalNavList;i++){
-    const a=navList[i].querySelector("a");
-    a.addEventListener("click",function(){
-      for(let i=0;i<totalSection;i++){
-        allSection[i].classList.remove("back-section");
-      }
-      for(let j=0; j<totalNavList;j++){
-        if(navList[j].querySelector("a").classList.contains("active")){
-          allSection[j].classList.add("back-section")
-        }
-        navList[j].querySelector("a").classList.remove("active");
-      }
-      this.classList.add("active");
-      showSection(this);
-      if(window.innerWidth<1200){
-        asideSectionTogglerBtn();
-      }
-    })
-  }
-  function showSection(element){
-    for(let i=0;i<totalSection;i++){
-      allSection[i].classList.remove("active");
-    }
-    const target=element.getAttribute("href").split("#")[1];
-    document.querySelector("#"+target).classList.add("active")
-  }
-  const navTogglerBtn=document.querySelector(".nav-toggler"),
-  aside=document.querySelector(".aside");
-  navTogglerBtn.addEventListener("click",()=>{
-    asideSectionTogglerBtn();
-  })
-  function asideSectionTogglerBtn(){
-    aside.classList.toggle("open")
+window.addEventListener("load", function() {
+  document.querySelector(".preloader").classList.add("opacity-0");
+  setTimeout(function() {
+    document.querySelector(".preloader").style.display = "none";
+  }, 1000);
+});
+
+// Mobile Nav Toggler
+(function() {
+  var navTogglerBtn = document.querySelector(".nav-toggler");
+  var aside = document.querySelector(".aside");
+  var allSection = document.querySelectorAll(".section");
+  if (!navTogglerBtn) return;
+  navTogglerBtn.addEventListener("click", function() {
+    aside.classList.toggle("open");
     navTogglerBtn.classList.toggle("open");
-    for(let i=0;i<totalSection;i++){
-      allSection[i].classList.toggle("open");
-    }
-  }
+    allSection.forEach(function(s) { s.classList.toggle("open"); });
+  });
+  document.querySelectorAll(".nav li a").forEach(function(a) {
+    a.addEventListener("click", function() {
+      if (window.innerWidth < 1200) {
+        aside.classList.remove("open");
+        navTogglerBtn.classList.remove("open");
+        allSection.forEach(function(s) { s.classList.remove("open"); });
+      }
+    });
+  });
+})();
 
 // ===== Home Hero: Particle Canvas =====
-(function () {
+(function() {
   var canvas = document.getElementById('portfolioParticles');
   if (!canvas) return;
   var ctx = canvas.getContext('2d');
@@ -90,8 +68,48 @@ window.addEventListener("load",function(){
   window.addEventListener('resize', init);
 })();
 
+// ===== Projects Page: Particle Canvas =====
+(function() {
+  var canvas = document.getElementById('projectsParticles');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var W, H, particles;
+  var COUNT = 55, MAX_DIST = 130;
+  var COLORS = ['rgba(34,197,94,', 'rgba(16,185,129,', 'rgba(52,211,153,'];
+  function resize() {
+    var section = canvas.parentElement;
+    W = canvas.width = section.offsetWidth;
+    H = canvas.height = section.offsetHeight;
+  }
+  function rnd(a, b) { return a + Math.random() * (b - a); }
+  function mkP() { return { x: rnd(0,W), y: rnd(0,H), vx: rnd(-0.22,0.22), vy: rnd(-0.22,0.22), r: rnd(1.5,2.8), c: COLORS[Math.floor(Math.random()*COLORS.length)] }; }
+  function init() { resize(); particles = Array.from({length:COUNT}, mkP); }
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    for (var i=0;i<particles.length;i++) {
+      var p=particles[i];
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<0||p.x>W)p.vx*=-1;
+      if(p.y<0||p.y>H)p.vy*=-1;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=p.c+'0.8)'; ctx.fill();
+      for(var j=i+1;j<particles.length;j++){
+        var q=particles[j], dx=p.x-q.x, dy=p.y-q.y, d=Math.sqrt(dx*dx+dy*dy);
+        if(d<MAX_DIST){
+          ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y);
+          ctx.strokeStyle='rgba(34,197,94,'+(1-d/MAX_DIST)*0.2+')';
+          ctx.lineWidth=0.6; ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  init(); draw();
+  window.addEventListener('resize', init);
+})();
+
 // ===== Home Hero: Typewriter =====
-(function () {
+(function() {
   var el = document.getElementById('introTypewriter');
   if (!el) return;
   var roles = ['Software Developer','AI Quality Analyst','Prompt Engineer','Data Scientist','NLP Specialist'];
@@ -105,15 +123,15 @@ window.addEventListener("load",function(){
 })();
 
 // ===== AI Chat Widget =====
-(function () {
+(function() {
   const WORKER_URL = 'https://chart-worker.ohamadikee98.workers.dev';
-
   const box = document.getElementById('aiChatBox');
   const toggle = document.getElementById('aiChatToggle');
   const closeBtn = document.getElementById('aiChatClose');
   const input = document.getElementById('aiChatInput');
   const sendBtn = document.getElementById('aiChatSend');
   const messages = document.getElementById('aiChatMessages');
+  if (!box || !toggle) return;
 
   let open = false;
   let closeTimer = null;
@@ -126,20 +144,20 @@ window.addEventListener("load",function(){
       clearTimeout(closeTimer);
       box.classList.remove('hidden');
       box.classList.add('chat-entering');
-      requestAnimationFrame(function () {
-        requestAnimationFrame(function () {
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
           box.classList.remove('ai-chat-hidden');
-          setTimeout(function () { box.classList.remove('chat-entering'); }, 280);
+          setTimeout(function() { box.classList.remove('chat-entering'); }, 280);
         });
       });
     } else {
       box.classList.add('ai-chat-hidden');
-      closeTimer = setTimeout(function () { if (!open) box.classList.add('hidden'); }, 270);
+      closeTimer = setTimeout(function() { if (!open) box.classList.add('hidden'); }, 270);
     }
   }
 
   toggle.addEventListener('click', toggleChat);
-  closeBtn.addEventListener('click', function () { open = true; toggleChat(); });
+  closeBtn.addEventListener('click', function() { open = true; toggleChat(); });
 
   function appendMessage(text, role) {
     const div = document.createElement('div');
@@ -158,10 +176,8 @@ window.addEventListener("load",function(){
     input.value = '';
     input.disabled = true;
     sendBtn.disabled = true;
-
     appendMessage(text, 'user');
     const typing = appendMessage('Thinking...', 'bot ai-msg-typing');
-
     try {
       const res = await fetch(WORKER_URL, {
         method: 'POST',
@@ -182,7 +198,7 @@ window.addEventListener("load",function(){
   }
 
   sendBtn.addEventListener('click', sendMessage);
-  input.addEventListener('keydown', function (e) {
+  input.addEventListener('keydown', function(e) {
     if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
   });
 })();
@@ -196,35 +212,25 @@ function animateCounters() {
     el.textContent = '0+';
     var timer = setInterval(function() {
       start += step;
-      if (start >= target) {
-        start = target;
-        clearInterval(timer);
-      }
+      if (start >= target) { start = target; clearInterval(timer); }
       el.textContent = start + '+';
     }, 38);
   });
 }
 
-// ===== Skill bar animation (run once when About becomes active) =====
-(function() {
-  var done = false;
+// ===== About page: animate skill bars and counters on load =====
+document.addEventListener("DOMContentLoaded", function() {
   var aboutSec = document.getElementById('about');
   if (!aboutSec) return;
-  var mo = new MutationObserver(function() {
-    if (aboutSec.classList.contains('active') && !done) {
-      done = true;
-      setTimeout(function() {
-        document.querySelectorAll('.progress-in').forEach(function(bar) {
-          var w = bar.style.width;
-          bar.style.width = '0%';
-          setTimeout(function() { bar.style.width = w; }, 60);
-        });
-      }, 300);
-      setTimeout(animateCounters, 200);
-    }
-  });
-  mo.observe(aboutSec, { attributes: true, attributeFilter: ['class'] });
-})();
+  setTimeout(function() {
+    document.querySelectorAll('.progress-in').forEach(function(bar) {
+      var w = bar.style.width;
+      bar.style.width = '0%';
+      setTimeout(function() { bar.style.width = w; }, 60);
+    });
+  }, 500);
+  setTimeout(animateCounters, 400);
+});
 
 // ===== Resume Language Switcher (kept for backwards compat) =====
 function switchResumeLang(lang) {
@@ -232,13 +238,11 @@ function switchResumeLang(lang) {
   var frFile = 'assets/resume/Ohamadike Chidera Emmanuel FR.pdf';
   var file = lang === 'fr' ? frFile : enFile;
   var label = lang === 'fr' ? 'Télécharger le CV (Français)' : 'Download CV (English)';
-
   var iframe = document.getElementById('resumeIframe');
   var dlLink = document.getElementById('resumeDownloadLink');
   var dlLabel = document.getElementById('resumeDlLabel');
   var btnEN = document.getElementById('btnEN');
   var btnFR = document.getElementById('btnFR');
-
   if (iframe) iframe.src = file;
   if (dlLink) dlLink.href = file;
   if (dlLabel) dlLabel.textContent = label;
@@ -246,7 +250,7 @@ function switchResumeLang(lang) {
   if (btnFR) btnFR.classList.toggle('resume-lang-active', lang === 'fr');
 }
 
-// Contact form — opens default mail client with pre-filled message
+// ===== Contact form =====
 function sendContactEmail() {
   const name = document.getElementById('contact-name').value.trim();
   const email = document.getElementById('contact-email').value.trim();
