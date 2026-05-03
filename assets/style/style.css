@@ -1263,3 +1263,238 @@ body.dark .resume-iframe{
 .ai-chat-box.chat-entering{
   animation: chatEntrance 0.25s ease forwards;
 }
+
+/* ============================================================
+   SECTION VISUAL ENHANCEMENTS — blended from Home page energy
+   ============================================================ */
+
+/* Subtle gradient backgrounds per section */
+.about   { background: linear-gradient(135deg,#f2f2fc 0%,#ede8f5 100%) !important; position: relative; overflow: hidden; }
+.experience{ background: linear-gradient(135deg,#f2f2fc 0%,#f5f0fd 100%) !important; position: relative; overflow: hidden; }
+.project { background: linear-gradient(135deg,#f2f2fc 0%,#eef4ff 100%) !important; position: relative; }
+.resume-section{ background: linear-gradient(135deg,#f2f2fc 0%,#edf6ff 100%) !important; position: relative; overflow: hidden; }
+.contact { background: linear-gradient(135deg,#f2f2fc 0%,#eef8f2 100%) !important; position: relative; overflow: hidden; }
+
+/* Floating gradient orbs — About */
+.about::before{
+  content:''; position:absolute; border-radius:50%; pointer-events:none; z-index:0;
+  width:380px; height:380px;
+  background:radial-gradient(circle,rgba(7,121,228,0.07) 0%,transparent 70%);
+  top:-120px; right:-80px;
+  animation: floatOrb 18s ease-in-out infinite;
+}
+.about::after{
+  content:''; position:absolute; border-radius:50%; pointer-events:none; z-index:0;
+  width:260px; height:260px;
+  background:radial-gradient(circle,rgba(139,92,246,0.06) 0%,transparent 70%);
+  bottom:60px; left:-80px;
+  animation: floatOrb 22s ease-in-out infinite reverse;
+}
+
+/* Floating gradient orbs — Experience */
+.experience::before{
+  content:''; position:absolute; border-radius:50%; pointer-events:none; z-index:0;
+  width:300px; height:300px;
+  background:radial-gradient(circle,rgba(139,92,246,0.07) 0%,transparent 70%);
+  top:40px; right:-60px;
+  animation: floatOrb 20s ease-in-out infinite;
+}
+.experience::after{
+  content:''; position:absolute; border-radius:50%; pointer-events:none; z-index:0;
+  width:220px; height:220px;
+  background:radial-gradient(circle,rgba(7,121,228,0.06) 0%,transparent 70%);
+  bottom:80px; left:-50px;
+  animation: floatOrb 25s ease-in-out infinite reverse;
+}
+
+/* Floating gradient orbs — Contact */
+.contact::before{
+  content:''; position:absolute; border-radius:50%; pointer-events:none; z-index:0;
+  width:320px; height:320px;
+  background:radial-gradient(circle,rgba(87,209,49,0.07) 0%,transparent 70%);
+  top:20px; right:-70px;
+  animation: floatOrb 20s ease-in-out infinite;
+}
+.contact::after{
+  content:''; position:absolute; border-radius:50%; pointer-events:none; z-index:0;
+  width:240px; height:240px;
+  background:radial-gradient(circle,rgba(7,121,228,0.07) 0%,transparent 70%);
+  bottom:60px; left:-60px;
+  animation: floatOrb 24s ease-in-out infinite reverse;
+}
+
+/* Resume section orb */
+.resume-section::before{
+  content:''; position:absolute; border-radius:50%; pointer-events:none; z-index:0;
+  width:350px; height:350px;
+  background:radial-gradient(circle,rgba(7,121,228,0.07) 0%,transparent 70%);
+  top:-80px; left:-80px;
+  animation: floatOrb 19s ease-in-out infinite;
+}
+.resume-section::after{
+  content:''; position:absolute; border-radius:50%; pointer-events:none; z-index:0;
+  width:200px; height:200px;
+  background:radial-gradient(circle,rgba(139,92,246,0.06) 0%,transparent 70%);
+  bottom:40px; right:-40px;
+  animation: floatOrb 26s ease-in-out infinite reverse;
+}
+
+@keyframes floatOrb{
+  0%,100%{ transform:translate(0,0) scale(1); }
+  33%{ transform:translate(25px,-35px) scale(1.06); }
+  66%{ transform:translate(-18px,22px) scale(0.94); }
+}
+
+/* Ensure content sits above orbs */
+.about .container,
+.experience .container,
+.project .container,
+.resume-section .container,
+.contact .container{ position:relative; z-index:1; }
+
+/* Projects section — tech grid dots background */
+.project{
+  background-image: radial-gradient(rgba(7,121,228,0.07) 1px, transparent 1px) !important;
+  background-size: 26px 26px !important;
+}
+
+/* ===== Stats Counters — About Section ===== */
+.about-stats{
+  flex:0 0 100%; max-width:100%;
+  display:flex; justify-content:center; gap:24px; flex-wrap:wrap;
+  margin-bottom:30px;
+  padding:22px 20px;
+  background:rgba(255,255,255,0.7);
+  border-radius:14px;
+  border:1px solid rgba(7,121,228,0.15);
+  backdrop-filter:blur(6px);
+  box-shadow:0 4px 20px rgba(7,121,228,0.08);
+}
+.stat-item{ text-align:center; min-width:100px; }
+.stat-num{
+  font-size:2.4rem; font-weight:900;
+  font-family:'Rubik',sans-serif;
+  color:var(--skin-color,#0779e4);
+  line-height:1; margin-bottom:6px;
+  transition:all 0.3s ease;
+}
+.stat-label{
+  font-size:12px; color:#504e70;
+  font-weight:600; text-transform:uppercase;
+  letter-spacing:0.07em;
+}
+body.dark .about-stats{
+  background:rgba(34,34,34,0.8);
+  border-color:rgba(99,102,241,0.2);
+}
+body.dark .stat-label{ color:#b0aec8; }
+
+/* ===== Animated Skill Bars ===== */
+.progress-in{
+  transition: width 1.3s cubic-bezier(0.4,0,0.2,1) !important;
+}
+
+/* ===== Project Card — enhanced hover glow ===== */
+.project .project-item-inner{
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.project .project-item-inner:hover{
+  box-shadow: 0 0 0 2px var(--skin-color,#0779e4),
+              0 12px 35px rgba(7,121,228,0.2) !important;
+  transform: translateY(-4px);
+}
+
+/* ===== Section content fade-in on enter ===== */
+@keyframes fadeSlideUp{
+  from{ opacity:0; transform:translateY(28px); }
+  to{   opacity:1; transform:translateY(0); }
+}
+.section.active .section-title{
+  animation: fadeSlideUp 0.55s ease both;
+}
+.about.active .about-stats{
+  animation: fadeSlideUp 0.55s 0.1s ease both;
+}
+.experience.active .timeline-item:nth-child(1){ animation: fadeSlideUp 0.5s 0.05s ease both; }
+.experience.active .timeline-item:nth-child(2){ animation: fadeSlideUp 0.5s 0.2s  ease both; }
+.project.active .project-item:nth-child(1){ animation: fadeSlideUp 0.45s 0.05s ease both; }
+.project.active .project-item:nth-child(2){ animation: fadeSlideUp 0.45s 0.12s ease both; }
+.project.active .project-item:nth-child(3){ animation: fadeSlideUp 0.45s 0.19s ease both; }
+.project.active .project-item:nth-child(4){ animation: fadeSlideUp 0.45s 0.26s ease both; }
+.project.active .project-item:nth-child(5){ animation: fadeSlideUp 0.45s 0.33s ease both; }
+.project.active .project-item:nth-child(6){ animation: fadeSlideUp 0.45s 0.40s ease both; }
+.project.active .project-item:nth-child(7){ animation: fadeSlideUp 0.45s 0.47s ease both; }
+
+/* ===== Contact — enhanced form inputs ===== */
+.contact .contact-form .form-control:focus{
+  box-shadow: 0 0 0 3px rgba(7,121,228,0.15);
+  border-color: var(--skin-color,#0779e4);
+}
+.contact .contact-form .btn:hover{
+  box-shadow: 0 6px 20px rgba(7,121,228,0.35);
+}
+
+/* ===== DUAL CV Layout — Resume Section ===== */
+.resume-dual-wrap{
+  flex:0 0 100%; max-width:100%;
+  display:flex; gap:22px; align-items:flex-start;
+}
+.resume-cv-col{ flex:1; min-width:0; }
+.resume-cv-header{
+  display:flex; align-items:center; justify-content:space-between;
+  margin-bottom:12px; padding:12px 16px;
+  background:rgba(255,255,255,0.85);
+  border-radius:10px; border:1px solid rgba(7,121,228,0.15);
+  backdrop-filter:blur(6px);
+}
+.resume-cv-label{
+  display:flex; align-items:center; gap:10px;
+}
+.resume-cv-badge{
+  background:var(--skin-color,#0779e4); color:#fff;
+  padding:3px 12px; border-radius:20px;
+  font-size:12px; font-weight:700; letter-spacing:0.05em;
+}
+.resume-cv-badge-fr{ background:#e40017; }
+.resume-cv-label strong{
+  font-size:15px; color:#302e4d; font-weight:700;
+}
+.resume-cv-dl-btn{
+  font-size:13px !important; padding:8px 18px !important;
+}
+/* Replace old single-iframe styles */
+.resume-iframe{
+  width:100%; height:74vh; min-height:440px;
+  border:1px solid #d4d4e3; border-radius:10px;
+  display:block; background:#fff;
+}
+body.dark .resume-cv-header{
+  background:rgba(34,34,34,0.85); border-color:#333;
+}
+body.dark .resume-cv-label strong{ color:#fff; }
+body.dark .resume-iframe{ border-color:#333; background:#222; }
+@media(max-width:900px){
+  .resume-dual-wrap{ flex-direction:column; }
+  .resume-iframe{ height:60vh; min-height:360px; }
+}
+
+/* ===== Experience timeline — coloured left line ===== */
+.experience .timeline .timeline-item::before,
+.about .about-content .timeline .timeline-item::before{
+  background: linear-gradient(to bottom, var(--skin-color,#0779e4), transparent);
+}
+.experience .timeline .circle-dot,
+.about .about-content .timeline .circle-dot{
+  box-shadow: 0 0 0 3px rgba(7,121,228,0.2);
+}
+
+/* ===== Preloader colour ===== */
+.preloader{ background:#0a0e1a; }
+.loader{
+  width:46px; height:46px;
+  border:4px solid rgba(99,102,241,0.2);
+  border-top-color:#6366f1;
+  border-radius:50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin{ to{ transform:rotate(360deg); } }

@@ -82,7 +82,7 @@
                 <a href="https://www.instagram.com/_bera_santos" target="_blank" title="Instagram"> <i class="fa fa-instagram"></i> </a>
               </div>
               <div class="intro-cta">
-                <a href="#about" class="btn intro-btn-primary" onclick="document.querySelector('[href=\'#about\']').click()">About Me</a>
+                <a href="javascript:void(0);" class="btn intro-btn-primary" onclick="document.querySelector('[href=\'#about\']').click()">About Me</a>
                 <div class="intro-cv-group">
                   <a href="assets/resume/Ohamadike Chidera Emmanuel.pdf" download class="btn intro-btn-secondary"><i class="fa fa-download"></i> CV (EN)</a>
                   <a href="assets/resume/Ohamadike Chidera Emmanuel FR.pdf" download class="btn intro-btn-secondary"><i class="fa fa-download"></i> CV (FR)</a>
@@ -100,6 +100,28 @@
                 <h2>About Me</h2>
               </div>
             </div>
+            <!-- Stats Counters -->
+            <div class="row">
+              <div class="about-stats padd-15">
+                <div class="stat-item">
+                  <div class="stat-num" data-target="3">0+</div>
+                  <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-num" data-target="7">0+</div>
+                  <div class="stat-label">Projects Built</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-num" data-target="10">0+</div>
+                  <div class="stat-label">Technologies</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-num" data-target="2">0+</div>
+                  <div class="stat-label">Languages Spoken</div>
+                </div>
+              </div>
+            </div>
+
             <div class="row">
               <div class="about-content padd-15">
                 <div class="row">
@@ -536,10 +558,10 @@
                     <img src="assets/imgs/Forex_AI_Bot.jpeg" alt="Forex Bot AI">
                   </div>
                   <div class="project-info">
-                    <h4 class="project-title">Forex Bot AI <span style="font-size:12px; background:#e8f4e8; color:#2d7a2d; padding:2px 8px; border-radius:10px; font-weight:500; margin-left:6px;">In Progress</span></h4>
-                    <p class="project-description">An AI-powered Forex trading bot that analyses market data, identifies trading signals, and executes trades automatically. Built with Python, integrating real-time market feeds and machine learning models for pattern recognition and risk management.</p>
+                    <h4 class="project-title">Mr Bera's_Bot &mdash; Forex AI <span style="font-size:12px; background:#e8f4e8; color:#2d7a2d; padding:2px 8px; border-radius:10px; font-weight:500; margin-left:6px;">In Progress</span></h4>
+                    <p class="project-description">An AI-powered Forex trading bot that analyses market data, identifies trading signals, and executes trades automatically. Features a full backtesting engine, moving-average crossover strategy, and risk management. Built with Python.</p>
                     <div class="buttons">
-                      <a href="https://github.com/EmmaSantos11" class="btn" target="_blank">View on GitHub</a>
+                      <a href="https://github.com/EmmaSantos11/forex-bot" class="btn" target="_blank">View on GitHub</a>
                     </div>
                   </div>
                 </div>
@@ -554,7 +576,7 @@
                     <h4 class="project-title">Bera &mdash; E-Commerce Website <span style="font-size:12px; background:#e8f4e8; color:#2d7a2d; padding:2px 8px; border-radius:10px; font-weight:500; margin-left:6px;">In Progress</span></h4>
                     <p class="project-description">A full-featured e-commerce web application with product listings, shopping cart, user authentication, and payment integration. Designed with a modern UI/UX for a seamless online shopping experience across all devices.</p>
                     <div class="buttons">
-                      <a href="https://github.com/EmmaSantos11" class="btn" target="_blank">View on GitHub</a>
+                      <a href="https://github.com/EmmaSantos11/bera-ecommerce" class="btn" target="_blank">View on GitHub</a>
                     </div>
                   </div>
                 </div>
@@ -574,25 +596,36 @@
               </div>
             </div>
             <div class="row">
-              <div class="resume-lang-bar padd-15">
-                <button class="btn resume-lang-btn resume-lang-active" id="btnEN" onclick="switchResumeLang('en')">
-                  <i class="fa fa-file-text-o"></i>&nbsp; English
-                </button>
-                <button class="btn resume-lang-btn" id="btnFR" onclick="switchResumeLang('fr')">
-                  <i class="fa fa-file-text-o"></i>&nbsp; Fran&ccedil;ais
-                </button>
-              </div>
-            </div>
-            <div class="row">
-              <div class="resume-dl-bar padd-15">
-                <a id="resumeDownloadLink" href="assets/resume/Ohamadike Chidera Emmanuel.pdf" download class="btn">
-                  <i class="fa fa-download"></i>&nbsp; <span id="resumeDlLabel">Download CV (English)</span>
-                </a>
-              </div>
-            </div>
-            <div class="row">
-              <div class="resume-preview-wrap padd-15">
-                <iframe id="resumeIframe" class="resume-iframe shadow-dark" src="assets/resume/Ohamadike Chidera Emmanuel.pdf" title="Resume Preview"></iframe>
+              <div class="resume-dual-wrap padd-15">
+
+                <!-- English CV -->
+                <div class="resume-cv-col">
+                  <div class="resume-cv-header shadow-dark">
+                    <div class="resume-cv-label">
+                      <span class="resume-cv-badge">EN</span>
+                      <strong>English Version</strong>
+                    </div>
+                    <a href="assets/resume/Ohamadike Chidera Emmanuel.pdf" download class="btn resume-cv-dl-btn">
+                      <i class="fa fa-download"></i> Download
+                    </a>
+                  </div>
+                  <iframe class="resume-iframe shadow-dark" src="assets/resume/Ohamadike Chidera Emmanuel.pdf" title="English Resume"></iframe>
+                </div>
+
+                <!-- French CV -->
+                <div class="resume-cv-col">
+                  <div class="resume-cv-header shadow-dark">
+                    <div class="resume-cv-label">
+                      <span class="resume-cv-badge resume-cv-badge-fr">FR</span>
+                      <strong>Version Fran&ccedil;aise</strong>
+                    </div>
+                    <a href="assets/resume/Ohamadike Chidera Emmanuel FR.pdf" download class="btn resume-cv-dl-btn">
+                      <i class="fa fa-download"></i> T&eacute;l&eacute;charger
+                    </a>
+                  </div>
+                  <iframe class="resume-iframe shadow-dark" src="assets/resume/Ohamadike Chidera Emmanuel FR.pdf" title="CV Fran&ccedil;ais"></iframe>
+                </div>
+
               </div>
             </div>
           </div>

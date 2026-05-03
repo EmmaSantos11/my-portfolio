@@ -187,7 +187,46 @@ window.addEventListener("load",function(){
   });
 })();
 
-// ===== Resume Language Switcher =====
+// ===== Stats counter animation =====
+function animateCounters() {
+  document.querySelectorAll('.stat-num').forEach(function(el) {
+    var target = parseInt(el.getAttribute('data-target'), 10);
+    var start = 0;
+    var step = Math.ceil(target / 35);
+    el.textContent = '0+';
+    var timer = setInterval(function() {
+      start += step;
+      if (start >= target) {
+        start = target;
+        clearInterval(timer);
+      }
+      el.textContent = start + '+';
+    }, 38);
+  });
+}
+
+// ===== Skill bar animation (run once when About becomes active) =====
+(function() {
+  var done = false;
+  var aboutSec = document.getElementById('about');
+  if (!aboutSec) return;
+  var mo = new MutationObserver(function() {
+    if (aboutSec.classList.contains('active') && !done) {
+      done = true;
+      setTimeout(function() {
+        document.querySelectorAll('.progress-in').forEach(function(bar) {
+          var w = bar.style.width;
+          bar.style.width = '0%';
+          setTimeout(function() { bar.style.width = w; }, 60);
+        });
+      }, 300);
+      setTimeout(animateCounters, 200);
+    }
+  });
+  mo.observe(aboutSec, { attributes: true, attributeFilter: ['class'] });
+})();
+
+// ===== Resume Language Switcher (kept for backwards compat) =====
 function switchResumeLang(lang) {
   var enFile = 'assets/resume/Ohamadike Chidera Emmanuel.pdf';
   var frFile = 'assets/resume/Ohamadike Chidera Emmanuel FR.pdf';
