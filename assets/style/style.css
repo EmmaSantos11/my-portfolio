@@ -336,13 +336,22 @@ body.dark .home{ background: #0a0e1a !important; }
   text-align: center;
 }
 .home .intro .intro-avatar{
-  height: 140px;
-  width: 140px;
+  height: 150px;
+  width: 150px;
   border-radius: 50%;
   display: inline-block;
-  border: 4px solid rgba(99,102,241,0.6);
-  box-shadow: 0 0 30px rgba(99,102,241,0.3);
-  margin-bottom: 10px;
+  object-fit: cover;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  outline: 3px solid rgba(99,102,241,0.7);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 8px rgba(99,102,241,0.12), 0 0 40px rgba(99,102,241,0.35);
+  margin-bottom: 14px;
+  animation: avatar-glow 3s ease-in-out infinite;
+}
+@keyframes avatar-glow{
+  0%,100%{ box-shadow: 0 0 0 8px rgba(99,102,241,0.12), 0 0 40px rgba(99,102,241,0.35); }
+  50%{     box-shadow: 0 0 0 10px rgba(99,102,241,0.2), 0 0 60px rgba(99,102,241,0.5); }
 }
 .home .intro .intro-greeting{
   color: #a5b4fc;
@@ -1171,19 +1180,25 @@ body.dark .ai-chat-input{ background: #333; color: #fff; border-color: #444; }
   padding: 0;
   overflow: visible;
   position: relative;
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.5), 0 0 18px rgba(99,102,241,0.4) !important;
+  animation: chat-btn-glow 3s ease-in-out infinite;
+}
+@keyframes chat-btn-glow{
+  0%,100%{ box-shadow: 0 0 0 3px rgba(99,102,241,0.5), 0 0 18px rgba(99,102,241,0.3); }
+  50%{     box-shadow: 0 0 0 4px rgba(99,102,241,0.8), 0 0 28px rgba(99,102,241,0.55); }
 }
 .ai-avatar-photo{
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
   border-radius: 50%;
   display: block;
-  border: 2px solid rgba(255,255,255,0.6);
 }
 .ai-avatar-online{
   position: absolute;
-  bottom: 3px;
-  right: 3px;
+  bottom: 2px;
+  right: 2px;
   width: 13px;
   height: 13px;
   background: #22c55e;
@@ -1197,12 +1212,18 @@ body.dark .ai-chat-input{ background: #333; color: #fff; border-color: #444; }
   60%{ transform: scale(1.15); box-shadow: 0 0 0 5px rgba(34,197,94,0); }
 }
 .ai-chat-avatar{
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   overflow: hidden;
+  border: 2px solid rgba(99,102,241,0.6);
+  flex-shrink: 0;
 }
 .ai-avatar-photo-sm{
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
   border-radius: 50%;
   display: block;
 }
