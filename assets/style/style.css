@@ -203,15 +203,26 @@ input,textarea,select{
   padding: 30px 0;
 }
 .aside .logo a{
-  font-size: 40px;
   color: #302e4c;
   font-family: 'Rubik', sans-serif;
-  font-weight: 700;
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
+  flex-direction: column;
   position: relative;
-  padding: 0 10px;
-  line-height: 50px;
+  padding: 10px 14px;
+}
+.aside .logo a .first-name{
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.aside .logo a .last-name{
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: 0.75;
+  line-height: 1.4;
 }
 .aside .logo a::before{
   content: '';
