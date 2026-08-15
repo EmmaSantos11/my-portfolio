@@ -217,12 +217,13 @@ input,textarea,select{
   line-height: 1.2;
 }
 .aside .logo a .last-name{
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 400;
-  letter-spacing: 3px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   opacity: 0.75;
   line-height: 1.4;
+  white-space: nowrap;
 }
 .aside .logo a::before{
   content: '';
@@ -501,34 +502,23 @@ body.dark .home{ background: #0a0e1a !important; }
   font-weight: 700;
   color: #302e4d;
 }
-.about .about-content .skills .skill-item h4{
-  line-height: 40px;
-  font-weight: 600;
-  padding: 10px 0;
-  font-size: 16px;
+.about .about-content .skills .skill-tags{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.about .about-content .skills .skill-tag{
+  display: inline-block;
+  background-color: #f1eef7;
   color: #302e4d;
-  text-transform: capitalize;
-  margin: 0;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
 }
-.about .about-content .skills .skill-item .progress{
-  background-color: #e3e3e3;
-  height: 2px;
-  border-radius: 4px;
-  overflow: hidden;
-  width: 100%;
-  position: relative;
-}
-.about .about-content .skills .skill-item{
-  margin-bottom: 5px;
-}
-.about .about-content .skills .skill-item .progress .progress-in{
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-}
-.about .about-content .skills .skill-item .skill-percent{
-  display: none;
+body.dark .about .about-content .skills .skill-tag{
+  background-color: rgba(255,255,255,0.08);
+  color: #fff;
 }
 .about .about-content .education{
   flex: 0 0 50%;
@@ -708,7 +698,6 @@ body.dark .contact .contact-info-item p,
 body.dark .project .project-item-inner .project-info .project-title,
 body.dark .about .about-content .timeline .timeline-title,
 body.dark .about .about-content h3.title,
-body.dark .about .about-content .skills .skill-item h4,
 body.dark .about .about-content .personal-info .info-item p,
 body.dark .section-title h2,
 body.dark .home .intro h1,
