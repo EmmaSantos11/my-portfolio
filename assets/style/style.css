@@ -912,6 +912,21 @@ body.dark .aside .nav li a{
   flex: 0 0 100% !important;
   max-width: 100% !important;
   text-align: left;
+  color: inherit;
+  text-decoration: none;
+  border-radius: 8px;
+  padding: 8px;
+  margin-left: -8px;
+  transition: background-color 0.2s ease;
+}
+a.contact-info-item{
+  cursor: pointer;
+}
+a.contact-info-item:hover{
+  background-color: rgba(7, 121, 228, 0.06);
+}
+a.contact-info-item:hover .contact-info-text h4{
+  text-decoration: underline;
 }
 .contact .contact-info-icon{
   width: 46px;
