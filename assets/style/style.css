@@ -629,6 +629,29 @@ body.dark .about .about-content .skills .skill-tag{
   transform: scale(1.1);
   -webkit-transform: scale(1.1);
 }
+.project-img-placeholder{
+  aspect-ratio: 16 / 10;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 14px;
+  transition: transform 0.5s ease;
+}
+.project .project-item-inner:hover .project-img-placeholder{
+  transform: scale(1.1);
+}
+.project-img-placeholder .placeholder-label{
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+.placeholder-tetris{
+  background: linear-gradient(160deg, #1a1a2e 0%, #0f3460 55%, #533483 100%);
+}
+.placeholder-ocean{
+  background: linear-gradient(160deg, #0a3d62 0%, #1e6091 55%, #4fb0c6 100%);
+}
 .project .project-item-inner .project-info{
   padding: 30px 15px;
   background-color: #fdf9ff;
