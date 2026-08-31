@@ -273,3 +273,19 @@ function sendContactEmail() {
   status.style.color = '#57d131';
   status.textContent = 'Opening your mail client...';
 }
+
+// ===== Translate Widget =====
+(function() {
+  const toggle = document.getElementById('translateToggle');
+  const panel = document.getElementById('translatePanel');
+  if (!toggle || !panel) return;
+  toggle.addEventListener('click', function(e) {
+    e.stopPropagation();
+    panel.classList.toggle('open');
+  });
+  document.addEventListener('click', function(e) {
+    if (panel.classList.contains('open') && !panel.contains(e.target) && e.target !== toggle) {
+      panel.classList.remove('open');
+    }
+  });
+})();

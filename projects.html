@@ -277,6 +277,21 @@
       <label><input type="radio" class="mode-switch" name="body-mode" value="dark"> Dark</label>
     </div>
 
+    <!-- Translate Widget -->
+    <div class="translate-widget" id="translateWidget">
+      <button class="translate-toggle" id="translateToggle" aria-label="Translate this page" title="Translate"><i class="fa fa-globe"></i></button>
+      <div class="translate-panel" id="translatePanel">
+        <span class="translate-label">Translate page</span>
+        <div id="google_translate_element"></div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false}, 'google_translate_element');
+      }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     <script src="./assets/script/script.js"></script>
     <script src="./assets/script/themeSwitcher.js"></script>
   </body>

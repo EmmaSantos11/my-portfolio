@@ -655,6 +655,79 @@ body.dark .about .about-content .skills .skill-tag{
 .placeholder-chatbot{
   background: linear-gradient(160deg, #134e4a 0%, #0f766e 55%, #2dd4bf 100%);
 }
+
+/* ===== Translate Widget ===== */
+.translate-widget{
+  position: fixed;
+  bottom: 28px;
+  left: 28px;
+  z-index: 9999;
+}
+.translate-toggle{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #fdf9ff;
+  border: 1px solid #d4d4e3;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  color: #302e4d;
+  padding: 0;
+}
+.translate-panel{
+  position: absolute;
+  bottom: 62px;
+  left: 0;
+  background-color: #fdf9ff;
+  border: 1px solid #d4d4e3;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+  padding: 12px;
+  min-width: 190px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: all 0.2s ease;
+}
+.translate-panel.open{
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.translate-panel .translate-label{
+  font-size: 12px;
+  font-weight: 700;
+  color: #504e70;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  display: block;
+}
+body.dark .translate-toggle,
+body.dark .translate-panel{
+  background-color: #151a2c;
+  border-color: #262c44;
+  color: #e8e8f0;
+}
+body.dark .translate-panel .translate-label{
+  color: #9a98b8;
+}
+@media(max-width: 991px){
+  .translate-widget{ bottom: 16px; left: 16px; }
+}
+.goog-te-banner-frame{ display: none !important; }
+body{ top: 0 !important; }
+.goog-te-gadget{ font-family: inherit !important; font-size: 0 !important; }
+.goog-te-gadget .goog-te-combo{
+  font-size: 14px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  border: 1px solid #d4d4e3;
+}
 .project .project-item-inner .project-info{
   padding: 30px 15px;
   background-color: #fdf9ff;
