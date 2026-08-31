@@ -652,6 +652,9 @@ body.dark .about .about-content .skills .skill-tag{
 .placeholder-ocean{
   background: linear-gradient(160deg, #0a3d62 0%, #1e6091 55%, #4fb0c6 100%);
 }
+.placeholder-chatbot{
+  background: linear-gradient(160deg, #134e4a 0%, #0f766e 55%, #2dd4bf 100%);
+}
 .project .project-item-inner .project-info{
   padding: 30px 15px;
   background-color: #fdf9ff;
