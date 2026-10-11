@@ -106,9 +106,9 @@ export default {
       return new Response(JSON.stringify({ error: 'No message provided' }), { status: 400 });
     }
 
-    const apiKey = (env && env.GEMINI_API_KEY) || (typeof GEMINI_API_KEY !== 'undefined' ? GEMINI_API_KEY : null) || (env && env.ANTHROPIC_API_KEY) || (typeof ANTHROPIC_API_KEY !== 'undefined' ? ANTHROPIC_API_KEY : null) || 'AIzaSyBgyKIbQIl_UpkRwMZ35uzbGcrSK8JVR90';
+    const apiKey = (env && env.GEMINI_API_KEY) || (typeof GEMINI_API_KEY !== 'undefined' ? GEMINI_API_KEY : null);
     if (!apiKey) {
-      return new Response(JSON.stringify({ error: 'GEMINI_API_KEY not configured in Cloudflare environment' }), {
+      return new Response(JSON.stringify({ error: 'GEMINI_API_KEY not configured in Cloudflare secrets' }), {
         status: 500,
         headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' },
       });
