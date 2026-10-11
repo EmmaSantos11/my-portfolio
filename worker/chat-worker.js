@@ -1,21 +1,22 @@
 /**
- * Cloudflare Worker — AI Chat backend for Bera's portfolio
+ * Cloudflare Worker — Google Gemini AI Chat backend for Bera's portfolio (100% Free)
  *
  * Deploy steps:
- *  1. Go to https://dash.cloudflare.com/ → Workers & Pages → Create Worker
- *  2. Paste this file's contents into the editor
- *  3. Add a secret: Settings → Variables → Secret → Name: ANTHROPIC_API_KEY → Value: your key
- *  4. Save & Deploy
- *  5. Copy your worker URL (e.g. https://bera-chat.your-name.workers.dev)
- *  6. Paste it into WORKER_URL in assets/script/script.js
+ *  1. Go to https://dash.cloudflare.com/ → Workers & Pages → Select your worker (chart-worker)
+ *  2. Paste this file's contents into the Cloudflare Worker editor
+ *  3. Add a secret: Settings → Variables and Secrets → Add Secret:
+ *       Name:  GEMINI_API_KEY
+ *       Value: <your free API key from https://aistudio.google.com/>
+ *  4. Click "Save and Deploy"
+ *  5. Your worker URL (https://chart-worker.ohamadikee98.workers.dev) is now powered by Gemini!
  */
 
-const SYSTEM_PROMPT = `You are an AI assistant on the personal portfolio of Chidera Emmanuel Ohamadike, also known as "Bera Santos".
+const SYSTEM_PROMPT = `You are an AI assistant on the personal portfolio of Chidera Emmanuel Ohamadike.
 Answer questions about his background, skills, projects, and experience in a friendly and professional tone.
 Keep answers concise (2-4 sentences max). You can respond in English or French depending on what the user uses. Never make up information — only use the facts below.
 
 ABOUT:
-- Full name: Chidera Emmanuel Ohamadike (goes by Bera Santos online)
+- Full name: Chidera Emmanuel Ohamadike
 - Location: Abidjan, Côte d'Ivoire — open to remote work worldwide
 - BSc Computer Science, Catholic University of Ghana, Fiapre (Jan 2020 – Oct 2024)
   Relevant coursework: IT Service Management, Database Design, Systems Analysis
@@ -62,7 +63,8 @@ PROJECTS:
 5. Bera E-Commerce Website (in progress) — full-featured online store with cart, user auth, and payment integration.
 6. Netflix Clone (in progress) — responsive landing + login UI replicating Netflix's design. HTML/CSS/JS.
 7. Find My iPhone Web App — tracks iPhone via iCloud credentials/IMEI on an interactive map. Python, Streamlit, Google Maps.
-8. Team-Based App Development (work in progress) — collaborative application development project.
+8. Tetris — classic Tetris built in vanilla JavaScript. HTML/CSS/JS.
+9. The Plastic Ocean 3D — interactive Three.js WebGL ocean scene. HTML/CSS/JS.
 
 RESUME:
 - English CV available for download on the portfolio
@@ -77,7 +79,7 @@ CONTACT:
 - Open to remote opportunities worldwide`;
 
 export default {
-  async fetch(request) {
+  async fetch(request, env) {
     if (request.method === 'OPTIONS') {
       return new Response(null, {
         headers: {
@@ -104,35 +106,66 @@ export default {
       return new Response(JSON.stringify({ error: 'No message provided' }), { status: 400 });
     }
 
-    const apiKey = globalThis.ANTHROPIC_API_KEY;
+    const apiKey = (env && env.GEMINI_API_KEY) || (typeof GEMINI_API_KEY !== 'undefined' ? GEMINI_API_KEY : null) || (env && env.ANTHROPIC_API_KEY) || (typeof ANTHROPIC_API_KEY !== 'undefined' ? ANTHROPIC_API_KEY : null) || 'AIzaSyBgyKIbQIl_UpkRwMZ35uzbGcrSK8JVR90';
     if (!apiKey) {
-      return new Response(JSON.stringify({ error: 'API key not configured' }), { status: 500 });
-    }
-
-    const claudeRes = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01',
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: 'claude-haiku-4-5-20251001',
-        max_tokens: 300,
-        system: SYSTEM_PROMPT,
-        messages: [{ role: 'user', content: userMessage }],
-      }),
-    });
-
-    if (!claudeRes.ok) {
-      return new Response(JSON.stringify({ error: 'AI service error' }), {
-        status: 502,
-        headers: { 'Access-Control-Allow-Origin': '*' },
+      return new Response(JSON.stringify({ error: 'GEMINI_API_KEY not configured in Cloudflare environment' }), {
+        status: 500,
+        headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' },
       });
     }
 
-    const claudeData = await claudeRes.json();
-    const reply = claudeData?.content?.[0]?.text || 'No response.';
+    const candidateModels = [
+      'gemini-flash-lite-latest',
+      'gemini-3.5-flash-lite',
+      'gemini-3.8-flash',
+      'gemini-flash-latest'
+    ];
+
+    let geminiRes = null;
+    let lastErrBody = '';
+
+    for (const model of candidateModels) {
+      const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+      geminiRes = await fetch(geminiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          systemInstruction: {
+            parts: [{ text: SYSTEM_PROMPT }],
+          },
+          contents: [
+            {
+              role: 'user',
+              parts: [{ text: userMessage }],
+            },
+          ],
+          generationConfig: {
+            maxOutputTokens: 350,
+          },
+        }),
+      });
+
+      if (geminiRes.ok) {
+        break;
+      } else {
+        lastErrBody = await geminiRes.text();
+        if (geminiRes.status === 401 || (geminiRes.status === 400 && lastErrBody.includes('API_KEY'))) {
+          break; // Stop if the key itself is invalid
+        }
+      }
+    }
+
+    if (!geminiRes || !geminiRes.ok) {
+      return new Response(JSON.stringify({ error: 'AI service error', status: geminiRes ? geminiRes.status : 500, detail: lastErrBody }), {
+        status: 502,
+        headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' },
+      });
+    }
+
+    const geminiData = await geminiRes.json();
+    const reply = geminiData?.candidates?.[0]?.content?.parts?.[0]?.text || 'No response generated.';
 
     return new Response(JSON.stringify({ reply }), {
       headers: {

@@ -655,6 +655,40 @@ body.dark .about .about-content .skills .skill-tag{
 .placeholder-chatbot{
   background: linear-gradient(160deg, #134e4a 0%, #0f766e 55%, #2dd4bf 100%);
 }
+.placeholder-tradingbotn2{
+  background: linear-gradient(160deg, #0b0f1a 0%, #0f3443 55%, #22d3ee 100%);
+}
+
+/* "Watch It Live" button — distinct from the standard green .btn so the
+   live-demo link doesn't read as just another GitHub link. */
+.btn-live{
+  background: #0f172a !important;
+  border: 1px solid #22c55e;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-live:hover{
+  background: #16221c !important;
+}
+.live-dot{
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 0 rgba(34,197,94,0.7);
+  animation: live-dot-pulse 2s infinite;
+}
+@keyframes live-dot-pulse{
+  0%   { box-shadow: 0 0 0 0 rgba(34,197,94,0.7); }
+  70%  { box-shadow: 0 0 0 7px rgba(34,197,94,0); }
+  100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+}
+.project-live-note{
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 10px;
+}
 
 /* ===== Translate Widget ===== */
 .translate-widget{
